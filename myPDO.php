@@ -13,7 +13,7 @@ class myPDO extends PDO
     public function __construct()
     {
         //DB情報を定義
-        $dbname = 'HBK';
+        $dbname = 'HAB';
         $host = '192.168.40.103';
         $dsn = "mysql:dbname=$dbname;host=$host";
         $user = 'tenda';
