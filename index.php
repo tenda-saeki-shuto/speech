@@ -13,6 +13,20 @@
         <label for="guess">あなたの予想:</label>
         <input type="text" id="guess" name="guess"  maxlength="4" pattern="\d{4}" required>
         <button type="submit" id="submit">送信</button>
+        <br>
+        <br>
+        <table id ="result" border="1">
+            <tr id="count">
+                <td>回数</td>
+            </tr>
+            <tr id="hit">
+                <td>Hit</td>
+            </tr>
+            <tr id="blow">
+                <td>Blow</td>
+            </tr>
+        </table>
+        <p id="message"></p>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
@@ -28,6 +42,9 @@
             }).done(function(data) {
                 if (data.result === "success") {
                     alert("ヒット: " + data.hit + ", ブロー: " + data.blow);
+                    $("#count").append("<td>" + data.count + "</td>");
+                    $("#hit").append("<td>" + data.hit + "</td>");
+                    $("#blow").append("<td>" + data.blow + "</td>");
                 } else {
                     alert("エラー: " + data.message);
                 }
@@ -36,5 +53,26 @@
             });
         })
     })
+
+    // ページがリロードされたときにセッションを破壊する
+    // $(document).ready(function () {
+    // $.ajax({
+    //     url: "ajax_handler.php", // PHP ファイルのURL
+    //     type: "POST",
+    //     data: { action: "update_data" }, // どの関数を実行するか指定
+    //     success: function (response) {
+    //         console.log("サーバーからの応答:", response);
+    //         $("#result").html(response); // ページに結果を表示
+    //     },
+    //     error: function (xhr, status, error) {
+    //         console.error("エラー:", error);
+    //     }
+    //     });
+    // });
+    // ページがリロードされたときにセッションを破壊する
+    $(window).on("beforeunload", function () {
+    navigator.sendBeacon("reload.php");
+});
+
 </script>
 </html>
