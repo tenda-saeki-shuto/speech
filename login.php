@@ -8,8 +8,8 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
     $password = $_POST['password'];
 
     // ここでデータベース接続とユーザー認証を行います
-    // 例: データベースからユーザー情報を取得し、パスワードを照合する
-    $sql = "SeLECT user_name, password FROM user WHERE username = :$username";
+    // データベースからユーザー情報を取得し、パスワードを照合する
+    $sql = "SELECT user_name, password FROM user WHERE user_name = \"$username\"";
     $select = new myPDO();
     $result = $select->inputSQL($sql);
 
