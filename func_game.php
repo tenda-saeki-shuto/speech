@@ -18,8 +18,7 @@ function generateAnswer() {
 // 初回ゲーム開始時の処理
 if (!isset($_SESSION['answer'])) {
     $_SESSION['answer'] = generateAnswer();
-    $count = 0;
-    $_SESSION['count'] = $count; // ゲーム開始時にカウントを初期化
+    $_SESSION['count'] = 0; // ゲーム開始時にカウントを初期化
 }
 
 $answer = $_SESSION['answer'];
