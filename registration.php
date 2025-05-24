@@ -7,20 +7,32 @@ require_once 'myPDO.php'; // 独自PDOクラスを読み込み
         $password = $_POST['password'];
 
         // データベース接続
-        try {
             $db = new myPDO();
-            $sql = "INSERT INTO user (user_name, password) VALUES (:username, :password)";
-            $stmt = $db->prepare($sql);
-            $stmt->bindParam(':username', $username);
-            $stmt->bindParam(':password', $password);
-            if ($stmt->execute()) {
-                echo "<p>登録が完了しました。</p>";
-            } else {
-                echo "<p>登録に失敗しました。</p>";
+
+            // ユーザー名の重複チェック
+            $sql = "SELECT COUNT(*) FROM user WHERE user_name = \"$username\"";
+            $result = $db->inputSQL($sql);
+            var_dump($result);
+            $result = $result[0]['COUNT(*)'];
+
+            echo $username;
+            echo $password;
+            echo $result;
+
+            if ($result > 0) {
+                echo $result;
+                $error_msg = "このユーザー名はすでに使用されています。";
             }
-        } catch (PDOException $e) {
-            echo "<p>エラー: " . $e->getMessage() . "</p>";
-        }
+            else
+            {
+                // ユーザー情報の登録
+                $sql = "INSERT INTO user (user_name, password) VALUES (\"$username\", \"$password\")";
+                $stmt = $db->inputSQL($sql);
+
+                // 登録成功後、ログインページへリダイレクト
+                header('Location: login.php');
+                exit();
+            }
     }
     ?>
 
@@ -32,8 +44,11 @@ require_once 'myPDO.php'; // 独自PDOクラスを読み込み
     <title>新規登録</title>
 </head>
 <body>
-    <h1></h1>新規登録</h1>
+    <h1>新規登録</h1>
     <p>ユーザー名とパスワードを入力してください。</p>
+    <font color="red">
+    <?php echo isset($error_msg) ? $error_msg : ''; ?>
+    </font>
     <form action="registration.php" method="post">
         <label for="username">ユーザー名:</label>
         <input type="text" id="username" name="username" required>
