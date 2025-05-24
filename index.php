@@ -34,6 +34,7 @@
         $("#submit").on("click", function(event){
 
             var p_num = $("#guess").val();
+            console.log("入力値: " + p_num);
 
             $.post({
                 url:"func_game.php",
@@ -41,7 +42,9 @@
                 dataType: "json",
             }).done(function(data) {
                 if (data.result === "success") {
-                    alert("ヒット: " + data.hit + ", ブロー: " + data.blow);
+                    alert("ヒット: " + data.hit + ", ブロー: " + data.blow + ",入力値: " + data.player_num);
+                    console.log('player_num: ' + data.player_num);
+                    console.log("正解: " + data.answer);
                     $("#count").append("<td>" + data.count + "</td>");
                     $("#hit").append("<td>" + data.hit + "</td>");
                     $("#blow").append("<td>" + data.blow + "</td>");
@@ -54,21 +57,6 @@
         })
     })
 
-    // ページがリロードされたときにセッションを破壊する
-    // $(document).ready(function () {
-    // $.ajax({
-    //     url: "ajax_handler.php", // PHP ファイルのURL
-    //     type: "POST",
-    //     data: { action: "update_data" }, // どの関数を実行するか指定
-    //     success: function (response) {
-    //         console.log("サーバーからの応答:", response);
-    //         $("#result").html(response); // ページに結果を表示
-    //     },
-    //     error: function (xhr, status, error) {
-    //         console.error("エラー:", error);
-    //     }
-    //     });
-    // });
     // ページがリロードされたときにセッションを破壊する
     $(window).on("beforeunload", function () {
     navigator.sendBeacon("reload.php");
