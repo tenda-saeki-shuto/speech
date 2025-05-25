@@ -19,6 +19,9 @@
             <tr id="count">
                 <td>回数</td>
             </tr>
+            <tr id="player_num">
+                <td>入力値</td>
+            </tr>
             <tr id="hit">
                 <td>Hit</td>
             </tr>
@@ -34,7 +37,6 @@
         $("#submit").on("click", function(event){
 
             var p_num = $("#guess").val();
-            console.log("入力値: " + p_num);
 
             $.post({
                 url:"func_game.php",
@@ -42,10 +44,9 @@
                 dataType: "json",
             }).done(function(data) {
                 if (data.result === "success") {
-                    alert("ヒット: " + data.hit + ", ブロー: " + data.blow + ",入力値: " + data.player_num);
-                    console.log('player_num: ' + data.player_num);
-                    console.log("正解: " + data.answer);
+                    alert("ヒット: " + data.hit + ", ブロー: " + data.blow);
                     $("#count").append("<td>" + data.count + "</td>");
+                    $("#player_num").append("<td>" + data.player_num + "</td>");
                     $("#hit").append("<td>" + data.hit + "</td>");
                     $("#blow").append("<td>" + data.blow + "</td>");
                 } else {

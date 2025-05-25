@@ -62,6 +62,7 @@ function calculateHitAndBlow($player_num, $answer) {
 // ユーザーの予想と正解を比較してヒットとブローを計算
 $result = calculateHitAndBlow($player_num, $answer);
 
+
 // 結果を JSON 形式で返す
 echo json_encode([
     'result' => 'success',
