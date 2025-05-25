@@ -92,7 +92,7 @@ if (!isset($_SESSION['username'])) {
                         $("#ranking").show();
                         $("#ranking").on("click", function() {
                             $.post({
-                                url: "ranking.php",
+                                url: "ranking_registration.php",
                                 data: { action: "registration" }, // 修正点
                                 dataType: "json",
                             }).done(function(rankingData) {
