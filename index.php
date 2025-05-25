@@ -45,6 +45,7 @@
             }).done(function(data) {
                 if (data.result === "success") {
                     alert("ヒット: " + data.hit + ", ブロー: " + data.blow);
+                    alert(data.message);
                     $("#count").append("<td>" + data.count + "</td>");
                     $("#player_num").append("<td>" + data.player_num + "</td>");
                     $("#hit").append("<td>" + data.hit + "</td>");
