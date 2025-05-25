@@ -15,7 +15,7 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
 
     $username_db = $result[0]['user_name'];
     $password_db = $result[0]['password'];
-    $userid_db = $result[0]['user_id'];
+    $userid_db = $result[0]['id'];
 
     // 認証成功の場合
     if($username === $username_db && $password === $password_db) {
