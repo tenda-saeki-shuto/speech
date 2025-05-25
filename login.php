@@ -46,7 +46,7 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
     <p>ユーザー名とパスワードを入力してください。</p>
     <form action="login.php" method="post">
         <font color="red">
-        <?php echo isset($error_msg) ? $error_msg : ''; ?>
+        <?php echo isset($error_msg) ? $error_msg : ''; ?><br>
         </font>
         <label for="username">ユーザー名:</label>
         <input type="text" id="username" name="username" required>
