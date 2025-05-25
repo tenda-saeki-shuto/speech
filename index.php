@@ -4,7 +4,6 @@ session_start(); // セッションを有効化
 if (!isset($_SESSION['username'])) {
     $_SESSION['username'] = "guest";
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +14,9 @@ if (!isset($_SESSION['username'])) {
     <title>ヒットアンドブロー</title>
 </head>
 <body>
-    <h1>ヒットアンドブロー</h1>
+    <header>
+        <?php require('header.php'); ?>
+    </header>
     <p>ヒットアンドブローは、数字を当てるゲームです。</p>
     <p>4桁の数字を当ててください。</p>
 
@@ -60,6 +61,7 @@ if (!isset($_SESSION['username'])) {
                     $("#player_num").append("<td>" + data.player_num + "</td>");
                     $("#hit").append("<td>" + data.hit + "</td>");
                     $("#blow").append("<td>" + data.blow + "</td>");
+                    console.log(data.answer); // 正解の数字をコンソールに表示
 
                     // ユーザーが正解した場合の処理(ランキングに登録するボタンを表示)
                     if (data.hit === 4) {
@@ -68,19 +70,21 @@ if (!isset($_SESSION['username'])) {
                         $("#ranking").on("click", function() {
                             $.post({
                                 url: "ranking.php",
-                                data: { player_num: p_num },
+                                data: { action: "registration" }, // 修正点
                                 dataType: "json",
                             }).done(function(rankingData) {
                                 if (rankingData.result === "success") {
                                     alert("ランキングに登録されました。");
-                                    location.reload(); // ページをリロードしてランキングを更新
+                                    location.reload();
                                 } else {
                                     alert("エラー: " + rankingData.message);
                                 }
                             }).fail(function() {
                                 alert("ランキング登録に失敗しました。");
                             });
-                        });
+
+                                                });
+
                     } else {
                         $("#ranking").hide(); // 正解でない場合はボタンを非表示
                     }
@@ -100,7 +104,7 @@ if (!isset($_SESSION['username'])) {
     // ページがリロードされたときにセッションを破壊する
     $(window).on("beforeunload", function () {
     navigator.sendBeacon("reload.php");
-});
+    });
 
 </script>
 </html>
