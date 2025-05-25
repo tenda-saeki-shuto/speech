@@ -9,17 +9,19 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
 
     // ここでデータベース接続とユーザー認証を行います
     // データベースからユーザー情報を取得し、パスワードを照合する
-    $sql = "SELECT user_name, password FROM user WHERE user_name = \"$username\"";
+    $sql = "SELECT * FROM user WHERE user_name = \"$username\"";
     $select = new myPDO();
     $result = $select->inputSQL($sql);
 
     $username_db = $result[0]['user_name'];
     $password_db = $result[0]['password'];
+    $userid_db = $result[0]['user_id'];
 
     // 認証成功の場合
     if($username === $username_db && $password === $password_db) {
         $_SESSION['login'] = true;
         $_SESSION['username'] = $username;
+        $_SESSION['userid'] = $userid_db; // ユーザーIDをセッションに保存
         header('Location: index.php'); // index.phpへリダイレクト
         exit();
     } else {
