@@ -71,7 +71,6 @@ $result = calculateHitAndBlow($player_num, $answer);
 // ユーザーの予想が正解と一致した場合、セッションをリセット
 if ($result['hit'] === 4) {
     unset($_SESSION['answer']); // 正解したのでセッションから正解を削除
-    $_SESSION['count'] = 0; // カウントもリセット
     $result['message'] = 'おめでとうございます！正解です！';
 } else {
     $result['message'] = 'もう一度試してください。';
