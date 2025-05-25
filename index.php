@@ -26,11 +26,11 @@ if (!isset($_SESSION['username'])) {
         <div class="center">
 
         <p>ヒットアンドブローは、<br>数字を当てるゲームです。</p>
-        <p>4桁の数字を当ててください。</p>
+        <p style="font-size: 18pt;">4桁の数字を当ててください。</p>
 
-        <label for="guess">あなたの予想:</label>
-        <input type="text" id="guess" name="guess"  maxlength="4" pattern="\d{4}" required>
-        <button type="submit" id="submit">送信</button>
+        <input type="text" id="guess" name="guess"  maxlength="4" pattern="\d{4}" required style="font-size: 50px; width: 200px; height: 50px; text-align:center;">
+        <br>
+        <button type="submit" id="submit" style="font-size: 30px;">送信</button>
         <br>
         <br>
         <table id ="result" border=1>
@@ -47,7 +47,15 @@ if (!isset($_SESSION['username'])) {
         <!-- ランキング表示--------------------------------------------------------------------- -->
         <div class="right">
             <h2>ランキング</h2>
-            <table id="ranking_table" border="1">
+            <div class="rank_dis">
+                表示件数
+                <select id="rank_display_num">
+                    <option value=10>10</option>
+                    <option value=20>20</option>
+                    <option value=30>30</option>
+                </select>
+            </div>
+            <table id="ranking_table" border=0>
                 <tr id="rank">
                     <th>順位</th>
                     <th>ユーザー名</th>
@@ -121,6 +129,33 @@ if (!isset($_SESSION['username'])) {
         })
     })
 
+    $(function(){
+    $('#rank_display_num').on("change", function(){
+        let optval = $(this).val();
+
+        $.post({
+            url: 'ranking_display.php',
+            data: { opt: optval },
+            dataType: 'json',
+        }).done(function(data){
+            console.log(data);
+
+            let rankingTable = $("#ranking_table");
+            rankingTable.find("tr:gt(0)").remove(); // 既存データをクリア（ヘッダーは保持）
+
+            for (let i = 0; i < data.length; i++) {
+                let rankingRow = `<tr>
+                                    <td>${data[i].rank}</td>
+                                    <td>${data[i].username}</td>
+                                    <td>${data[i].count}</td>
+                                    </tr>`;
+                rankingTable.append(rankingRow);
+            }
+        }).fail(function(){
+            alert("ランキングの表示に失敗しました。");
+        });
+    });
+});
 
 
     // ページがリロードされたときにセッションを破壊する

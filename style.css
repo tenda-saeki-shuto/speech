@@ -12,18 +12,18 @@ header {
 }
 
 .left {
-  width: 300px;
+  width: 100px;
   background-color: violet;
 }
 
 .center {
-  flex: 1;
+  width: 50%;
   background-color: aqua;
   text-align: center;
 }
 
 .right {
-  width: 300px;
+  width: 30%;
   background-color: violet;
 }
 
