@@ -2,7 +2,7 @@
   text-align: center;
   background-color: antiquewhite;
   width: 50%;
-  height: 400px;
+  height: 500px;
   margin: auto;
   position: relative;
   top: 50px;
@@ -51,4 +51,35 @@ label {
 .btn_03:hover {
   color: #fff;
   background: #27acd9;
+}
+
+a.btn_26 {
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  width: 180px;
+  margin: auto;
+  padding: 1rem 4rem;
+  border-radius: 100vw;
+  color: #fff;
+  background: #27acd9;
+}
+a.btn_26:hover {
+  background-position: right center;
+  background-size: 200% auto;
+  -webkit-animation: pulse 2s infinite;
+  animation: shad26 1.5s infinite;
+  color: #fff;
+}
+@keyframes shad26 {
+  0% {
+    box-shadow: 0 0 0 0 #27acd9;
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgb(39 172 217 / 0%);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(39 172 217 / 0%);
+  }
 }

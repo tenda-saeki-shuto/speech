@@ -54,6 +54,8 @@ require_once 'myPDO.php'; // 独自PDOクラスを読み込み
         <input type="password" id="password" name="password" required>
         <br>
         <button type="submit" class="btn_03">登録</button>
+        <br>
+        <a href="login.php" class="btn_26">ログイン</a>
     </form>
     </div>
 

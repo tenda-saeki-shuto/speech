@@ -57,6 +57,9 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
             <input type="password" id="password" name="password" required>
             <br>
             <button type="submit" class="btn_03">ログイン</button>
+            <br>
+            <a href="registration.php" class="btn_26">新規登録</a>
+
     </div>
 </body>
 </html>
