@@ -17,30 +17,46 @@ if (!isset($_SESSION['username'])) {
     <header>
         <?php require('header.php'); ?>
     </header>
-    <p>ヒットアンドブローは、数字を当てるゲームです。</p>
-    <p>4桁の数字を当ててください。</p>
+    <div class="container">
+        <div class="left">
+
+        </div>
+        <!--------- ゲームコンテンツ -------------------------------------------------------------->
+        <div class="center">
+
+        <p>ヒットアンドブローは、数字を当てるゲームです。</p>
+        <p>4桁の数字を当ててください。</p>
 
         <label for="guess">あなたの予想:</label>
         <input type="text" id="guess" name="guess"  maxlength="4" pattern="\d{4}" required>
         <button type="submit" id="submit">送信</button>
         <br>
         <br>
-        <table id ="result" border="1">
-            <tr id="count">
-                <td>回数</td>
-            </tr>
-            <tr id="player_num">
-                <td>入力値</td>
-            </tr>
-            <tr id="hit">
-                <td>Hit</td>
-            </tr>
-            <tr id="blow">
-                <td>Blow</td>
+        <table id ="result" border=1>
+            <tr id="result">
+                <th>回数</th>
+                <th>入力値</th>
+                <th>HIT</th>
+                <th>BLOW</th>
             </tr>
         </table>
         <p id="message"></p>
         <button id="ranking" style="display:none;">ランキングに登録する</button>
+        </div>
+        <!-- ランキング表示--------------------------------------------------------------------- -->
+        <div class="right">
+            <h2>ランキング</h2>
+            <table id="ranking_table" border="1">
+                <tr>
+                    <th>順位</th>
+                    <th>ユーザー名</th>
+                    <th>回数</th>
+                </tr>
+                <?php
+                // require('ranking.php'); // ランキングの表示を行う
+                ?>
+        </table>
+    </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
@@ -57,10 +73,16 @@ if (!isset($_SESSION['username'])) {
                 if (data.result === "success") {
                     alert("ヒット: " + data.hit + ", ブロー: " + data.blow);
                     $("#message").text(data.message);
-                    $("#count").append("<td>" + data.count + "</td>");
-                    $("#player_num").append("<td>" + data.player_num + "</td>");
-                    $("#hit").append("<td>" + data.hit + "</td>");
-                    $("#blow").append("<td>" + data.blow + "</td>");
+                    let newRow = `<tr>
+                                <td>${data.count}</td>
+                                <td>${data.player_num}</td>
+                                <td>${data.hit}</td>
+                                <td>${data.blow}</td>
+                                </tr>`;
+
+                    $("#result").append(newRow); // `#result` テーブルに追加
+
+
                     console.log(data.answer); // 正解の数字をコンソールに表示
 
                     // ユーザーが正解した場合の処理(ランキングに登録するボタンを表示)
