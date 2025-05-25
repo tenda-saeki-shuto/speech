@@ -8,6 +8,12 @@ if ($player_num === null) {
     exit;
 }
 
+// 予想が4桁の数字であることを確認
+if (!preg_match('/^\d{4}$/', $player_num)) {
+    echo json_encode(['result' => 'error', 'message' => '4桁の数字を入力してください。']);
+    exit;
+}
+
 // 正解の数字を生成
 function generateAnswer() {
     $digits = range(0, 9);
