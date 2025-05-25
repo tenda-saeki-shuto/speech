@@ -20,14 +20,15 @@ if (!isset($_SESSION['username'])) {
     </header>
     <div class="container">
         <div class="left">
-
+        <div class="box geometric"></div>
         </div>
         <!--------- ゲームコンテンツ -------------------------------------------------------------->
         <div class="center">
 
         <p style="font-size: 18px;">ヒットアンドブローは、<br>数字を当てるゲームです。</p>
+        <br>
         <p style="font-size: 18pt;">4桁の数字を当ててください。</p>
-
+        <br>
         <input type="text" id="guess" name="guess"  maxlength="4" pattern="\d{4}" required style="font-size: 50px; width: 200px; height: 50px; text-align:center;">
         <br>
         <button type="submit" id="submit" style="font-size: 30px;">送信</button>
