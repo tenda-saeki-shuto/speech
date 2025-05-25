@@ -129,19 +129,25 @@ if (!isset($_SESSION['username'])) {
         })
     })
 
-    $(function(){
+    $(document).ready(function () {
+        fetchRanking(10); // 初期表示（例: 10件）
+    });
+
     $('#rank_display_num').on("change", function(){
         let optval = $(this).val();
+        fetchRanking(optval); // プルダウン変更時に表示件数を変更
+    });
 
+    function fetchRanking(limit) {
         $.post({
             url: 'ranking_display.php',
-            data: { opt: optval },
+            data: { opt: limit },
             dataType: 'json',
         }).done(function(data){
             console.log(data);
 
-            let rankingTable = $("#ranking_table");
-            rankingTable.find("tr:gt(0)").remove(); // 既存データをクリア（ヘッダーは保持）
+            let rankingTable = $("#ranking_table tbody");
+            $("#ranking_table tr:gt(0)").remove(); // 1行目（ヘッダー）を残して行を削除
 
             for (let i = 0; i < data.length; i++) {
                 let rankingRow = `<tr>
@@ -154,8 +160,7 @@ if (!isset($_SESSION['username'])) {
         }).fail(function(){
             alert("ランキングの表示に失敗しました。");
         });
-    });
-});
+    }
 
 
     // ページがリロードされたときにセッションを破壊する

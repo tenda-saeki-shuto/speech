@@ -12,7 +12,7 @@ header {
 }
 
 .left {
-  width: 100px;
+  width: 20%;
   background-color: violet;
 }
 
@@ -31,4 +31,11 @@ table {
   width: 100%;
   border-collapse: collapse;
   font-size: 20px;
+}
+
+#ranking_table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 20px;
+  text-align: center;
 }
