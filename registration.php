@@ -12,15 +12,10 @@ require_once 'myPDO.php'; // 独自PDOクラスを読み込み
             // ユーザー名の重複チェック
             $sql = "SELECT COUNT(*) FROM user WHERE user_name = \"$username\"";
             $result = $db->inputSQL($sql);
-            var_dump($result);
             $result = $result[0]['COUNT(*)'];
 
-            echo $username;
-            echo $password;
-            echo $result;
 
             if ($result > 0) {
-                echo $result;
                 $error_msg = "このユーザー名はすでに使用されています。";
             }
             else
