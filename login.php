@@ -39,21 +39,24 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" href="login_style.css">
     <title>ログイン</title>
 </head>
 <body>
-    <h1>ログイン</h1>
-    <p>ユーザー名とパスワードを入力してください。</p>
-    <form action="login.php" method="post">
-        <font color="red">
-        <?php echo isset($error_msg) ? $error_msg : ''; ?><br>
-        </font>
-        <label for="username">ユーザー名:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <label for="password">パスワード:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <button type="submit">ログイン</button>
+    <div class="contents">
+        <h1>ログイン</h1>
+        <p>ユーザー名とパスワードを入力してください。</p>
+        <form action="login.php" method="post">
+            <font color="red" size="4">
+            <?php echo isset($error_msg) ? $error_msg : ''; ?><br>
+            </font>
+            <label for="username">ユーザー名:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="password">パスワード:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit" class="btn_03">ログイン</button>
+    </div>
 </body>
 </html>

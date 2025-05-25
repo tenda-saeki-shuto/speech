@@ -1,0 +1,55 @@
+.contents {
+  text-align: center;
+  background-color: antiquewhite;
+  width: 50%;
+  height: 400px;
+  margin: auto;
+  position: relative;
+  top: 50px;
+  border-radius: 30px;
+}
+
+.contents h1 {
+  font-size: 50px;
+  color: black;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+p {
+  font-size: 20px;
+  color: black;
+  margin-top: 20px;
+}
+
+input {
+  width: 200px;
+  height: 30px;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 20px;
+  color: black;
+}
+
+.btn_03 {
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  width: 300px;
+  margin: auto;
+  padding: 1rem 4rem;
+  font-weight: bold;
+  border: 2px solid #27acd9;
+  color: #27acd9;
+  border-radius: 100vh;
+  transition: 0.5s;
+}
+.btn_03:hover {
+  color: #fff;
+  background: #27acd9;
+}
