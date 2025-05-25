@@ -25,7 +25,7 @@ if (!isset($_SESSION['username'])) {
         <!--------- ゲームコンテンツ -------------------------------------------------------------->
         <div class="center">
 
-        <p>ヒットアンドブローは、<br>数字を当てるゲームです。</p>
+        <p style="font-size: 18px;">ヒットアンドブローは、<br>数字を当てるゲームです。</p>
         <p style="font-size: 18pt;">4桁の数字を当ててください。</p>
 
         <input type="text" id="guess" name="guess"  maxlength="4" pattern="\d{4}" required style="font-size: 50px; width: 200px; height: 50px; text-align:center;">
@@ -41,14 +41,14 @@ if (!isset($_SESSION['username'])) {
                 <th style="width: 25%;">BLOW</th>
             </tr>
         </table>
-        <p id="message"></p>
-        <button id="ranking" style="display:none;">ランキングに登録する</button>
+        <p id="message" style="font-size: 20px;"></p>
+        <button id="ranking" style="display:none;"><span>ランキングに登録する</span></button>
         </div>
         <!-- ランキング表示--------------------------------------------------------------------- -->
         <div class="right">
-            <h2>ランキング</h2>
+            <h2 style="font-size: 40px;">ランキング</h2>
             <div class="rank_dis">
-                表示件数
+                <span style="font-size: 20px;">表示件数</span>
                 <select id="rank_display_num">
                     <option value=10>10</option>
                     <option value=20>20</option>
@@ -144,8 +144,6 @@ if (!isset($_SESSION['username'])) {
             data: { opt: limit },
             dataType: 'json',
         }).done(function(data){
-            console.log(data);
-
             let rankingTable = $("#ranking_table tbody");
             $("#ranking_table tr:gt(0)").remove(); // 1行目（ヘッダー）を残して行を削除
 
