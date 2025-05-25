@@ -35,10 +35,10 @@ if (!isset($_SESSION['username'])) {
         <br>
         <table id ="result" border=1>
             <tr id="result">
-                <th>回数</th>
-                <th>入力値</th>
-                <th>HIT</th>
-                <th>BLOW</th>
+                <th style="width: 20%;">回数</th>
+                <th style="width: 30%;">入力値</th>
+                <th style="width: 25%;">HIT</th>
+                <th style="width: 25%;">BLOW</th>
             </tr>
         </table>
         <p id="message"></p>
@@ -48,17 +48,16 @@ if (!isset($_SESSION['username'])) {
         <div class="right">
             <h2>ランキング</h2>
             <table id="ranking_table" border="1">
-                <tr>
+                <tr id="rank">
                     <th>順位</th>
                     <th>ユーザー名</th>
                     <th>回数</th>
                 </tr>
-                <?php
-                // require('ranking.php'); // ランキングの表示を行う
-                ?>
         </table>
     </div>
 </body>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
     $(function(){
