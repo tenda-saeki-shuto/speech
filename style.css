@@ -13,12 +13,12 @@ header {
 
 .left {
   width: 20%;
-  background-color: rgb(221, 168, 221);
+  background-color: rgb(252, 221, 252);
 }
 
 .center {
   width: 50%;
-  background-color: rgb(124, 228, 228);
+  background-color: rgb(210, 230, 230);
   text-align: center;
 }
 
@@ -42,6 +42,16 @@ table {
 
 .rank_dis {
   text-align: right;
+  position: relative;
+  right: 10px;
+}
+
+.icon_oukan {
+  width: 30px;
+  height: 30px;
+  background-image: url(kkrn_icon_oukan_1.png);
+  background-size: cover;
+  display: inline-block;
 }
 
 select {
@@ -148,3 +158,26 @@ button.btn {
   -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table tr {
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+table tr:hover {
+  background-color: #d4f0fd;
+}
+
+table th,
+table td {
+  text-align: center;
+  width: 25%;
+  padding: 15px 0;
+}
+

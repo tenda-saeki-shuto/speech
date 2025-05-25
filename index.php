@@ -46,7 +46,7 @@ if (!isset($_SESSION['username'])) {
         </div>
         <!-- ランキング表示--------------------------------------------------------------------- -->
         <div class="right">
-            <h2 style="font-size: 40px;">ランキング</h2>
+            <h2 style="font-size: 40px; text-align:center;" class="ranking">ランキング</h2>
             <div class="rank_dis">
                 <span style="font-size: 20px;">表示件数</span>
                 <select id="rank_display_num">
